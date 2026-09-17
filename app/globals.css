@@ -280,6 +280,19 @@
   .summary-total dt { color: var(--ink); font-weight: 600; }
   .summary-total .price strong { font-size: 1.5rem; }
   .price-summary > p:not(.eyebrow) { color: var(--muted); }
+  .session-picker { display: grid; gap: 2rem; }
+  .session-controls { display: grid; gap: 0.5rem; max-width: 34rem; }
+  .session-list { display: grid; gap: 0.75rem; }
+  .session-list h2 { font-size: 1.7rem; margin-bottom: 0.5rem; }
+  .session-choice { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; text-align: left; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+  .session-choice:hover:not(:disabled), .session-choice.is-selected { border-color: var(--celadon); box-shadow: inset 3px 0 var(--celadon); }
+  .session-choice:disabled { background: #e4e3dc; color: #686b63; cursor: not-allowed; }
+  .session-choice span:first-child { display: grid; gap: 0.25rem; }
+  .session-choice small { color: var(--muted); }
+  .session-choice > span:last-child { white-space: nowrap; color: var(--muted); font-size: 0.9rem; }
+  .session-next { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .session-next p { color: var(--muted); }
+  .state-copy { padding: 1.5rem; border: 1px solid var(--line); background: var(--surface); color: var(--muted); }
 }
 @media (min-width: 768px) {
   .site-navigation { flex-basis: auto; order: initial; border-top: 0; padding: 0; gap: 1.5rem; }
