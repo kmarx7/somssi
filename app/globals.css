@@ -343,3 +343,14 @@
 .confirmation-card dt { color:var(--muted); }
 .confirmation-card dd { margin:0; text-align:right; }
 @media (min-width: 768px) { .checkout-layout { grid-template-columns:minmax(0,1.3fr) minmax(18rem,.7fr); align-items:start; } .checkout-fields { grid-template-columns:1fr 1fr; } .checkout-fields .field:nth-child(3), .checkout-fields .field:nth-child(4), .checkout-fields .field:nth-child(5), .checkout-fields .field:nth-child(6) { grid-column:span 2; } .checkout-summary { position:sticky; top:6rem; } }
+
+.admin-page { padding-bottom:5rem; }
+.admin-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin:2rem 0; }
+.admin-stats .card { padding:1.25rem; }
+.admin-stats strong { display:block; font-size:2rem; margin-top:.5rem; }
+.admin-bookings { display:grid; gap:1rem; }
+.admin-booking { display:flex; justify-content:space-between; gap:1.5rem; align-items:center; padding:1.25rem; }
+.admin-booking h2 { margin:.35rem 0; font-size:1.15rem; }
+.admin-meta { color:var(--muted); font-size:.9rem; }
+.admin-booking-side { display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; justify-content:flex-end; }
+@media (max-width: 600px) { .admin-stats { gap:.5rem; } .admin-stats .card { padding:.85rem; } .admin-booking { align-items:flex-start; flex-direction:column; } .admin-booking-side { justify-content:flex-start; } }
