@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="나에게 맞는 한국의 솜씨를 발견하고 선택하세요 — SOMSSI Experience">
+  <title>EXPERIENCE | SOMSSI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=somssi2-20260820">
+</head>
+<body class="sub-page experience-hub-page">
+  <header class="header" id="header">
+    <a class="logo" href="somssi2/index.html" aria-label="SOMSSI 홈"><svg viewBox="0 0 82 30" aria-hidden="true"><path d="M2 25C14 25 18 5 31 6c10 1 9 16 20 17 8 0 15-8 29-20"/><path d="M14 24c7-3 9-14 17-16M20 25c6-4 7-12 12-16"/></svg><span><b>솜씨</b><small>SOMSSI</small></span></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav"><i></i><i></i><i></i><span class="sr-only">메뉴 열기</span></button>
+    <nav id="nav" aria-label="주요 메뉴"><a href="somssi2/about.html">ABOUT</a><a class="active" href="somssi2/experience.html">EXPERIENCE</a><a href="somssi2/reservation.html">RESERVATION</a><a href="somssi2/reservation-check.html">RESERVATION CHECK</a></nav>
+  </header>
+
+  <main>
+    <section class="hub-hero">
+      <div class="hub-hero-image" aria-hidden="true"></div><div class="shade"></div>
+      <div class="hub-hero-copy">
+        <p>DISCOVER YOUR K-CULTURE EXPERIENCE</p>
+        <h1>어떤 한국의 솜씨를<br><em>배워보고 싶나요?</em></h1>
+        <span>소리를 만들고, 차를 내리고, 붓을 움직이며<br>나에게 맞는 한국문화를 발견하세요.</span>
+        <div><button type="button" class="hub-primary" data-open-somssi-test>나의 솜씨 추천받기</button><a href="#experiences">모든 Experience 보기 <b>↓</b></a></div>
+      </div>
+      <div class="hub-hero-index" aria-hidden="true"><b>WHAT'S</b><span>YOUR</span><em>SOMSSI?</em></div>
+    </section>
+
+    <section class="hub-intro">
+      <p class="chapter">FIND YOUR SOMSSI</p>
+      <div><h2>상품을 고르기 전에,<br><em>나의 취향부터 발견합니다.</em></h2><div><p>SOMSSI는 많은 상품을 나열하는 대신 여행자의 감각, 속도, 관심과 원하는 결과물을 이해하고 가장 잘 맞는 문화경험을 추천합니다.</p><button type="button" data-open-somssi-test>약 1분 · 솜씨 유형 테스트 <span>→</span></button></div></div>
+    </section>
+
+    <section class="experience-browser" id="experiences">
+      <header class="browser-heading"><p class="chapter">EXPLORE EXPERIENCES</p><div><h2>나의 다음 솜씨</h2><p><span id="visible-count">9</span>개의 Experience</p></div></header>
+      <nav class="category-tabs" aria-label="Experience 카테고리">
+        <button type="button" class="active" data-filter="all">ALL</button><button type="button" data-filter="music">MUSIC <small>소리</small></button><button type="button" data-filter="art">ART <small>붓과 색</small></button><button type="button" data-filter="craft">CRAFT <small>손공예</small></button><button type="button" data-filter="taste">TASTE <small>맛과 차</small></button><button type="button" data-filter="style">STYLE <small>한복</small></button>
+      </nav>
+
+      <div class="hub-grid" id="experience-grid">
+        <article class="hub-card hub-card-featured" data-category="music" data-type="string" id="card-string">
+          <div class="card-image image-gayageum"><span>AVAILABLE</span></div>
+          <div class="card-content"><p>MUSIC · SIGNATURE 01</p><h3>줄을 다루는 솜씨</h3><em>Play Arirang on the Gayageum</em><div class="achievement-label"><span>ACHIEVEMENT</span><strong>아리랑 한 곡 완주</strong></div><dl><div><dt>TIME</dt><dd>120–150분</dd></div><div><dt>GROUP</dt><dd>3–6명</dd></div><div><dt>LANGUAGE</dt><dd>KR · EN</dd></div><div><dt>FROM</dt><dd>₩99,000</dd></div></dl><a href="somssi2/gayageum.html">EXPERIENCE 보기 <span>→</span></a></div>
+        </article>
+
+        <article class="hub-card" data-category="taste" data-type="tea" id="card-tea">
+          <div class="card-image image-tea"><span>PILOT SOON</span></div><div class="card-content"><p>TASTE · TEA</p><h3>차 한 잔의 솜씨</h3><em>Complete a Korean Tea Table</em><div class="achievement-label"><span>ACHIEVEMENT</span><strong>한 번의 차상 완성</strong></div><button class="interest-button" type="button">오픈 알림 받기 <span>＋</span></button></div>
+        </article>
+
+        <article class="hub-card" data-category="art" data-type="brush" id="card-brush">
+          <div class="card-image image-brush"><span>PILOT SOON</span></div><div class="card-content"><p>ART · CALLIGRAPHY</p><h3>붓을 다루는 솜씨</h3><em>Write Your Name in Hangul</em><div class="achievement-label"><span>ACHIEVEMENT</span><strong>나의 한글 이름 작품</strong></div><button class="interest-button" type="button">오픈 알림 받기 <span>＋</span></button></div>
+        </article>
+
+        <article class="hub-card" data-category="craft" data-type="knot" id="card-knot">
+          <div class="card-image image-knot"><span>PILOT SOON</span></div><div class="card-content"><p>CRAFT · KNOT</p><h3>매듭의 솜씨</h3><em>Make Your Own Norigae</em><div class="achievement-label"><span>ACHIEVEMENT</span><strong>나만의 노리개 완성</strong></div><button class="interest-button" type="button">오픈 알림 받기 <span>＋</span></button></div>
+        </article>
+
+        <article class="hub-card" data-category="style" data-type="color" id="card-style">
+          <div class="card-image image-hanbok"><span>PILOT SOON</span></div><div class="card-content"><p>STYLE · HANBOK</p><h3>옷을 입는 솜씨</h3><em>Discover the Art of Hanbok</em><div class="achievement-label"><span>ACHIEVEMENT</span><strong>나에게 맞는 한복 차림</strong></div><button class="interest-button" type="button">오픈 알림 받기 <span>＋</span></button></div>
+        </article>
+
+        <article class="hub-card quiet" data-category="craft" data-type="clay"><div class="card-image image-clay"><span>COMING SOON</span></div><div class="card-content"><p>CRAFT · POTTERY</p><h3>흙을 빚는 솜씨</h3><em>Shape Clay by Hand</em><div class="achievement-label"><span>ACHIEVEMENT</span><strong>나의 작은 그릇 완성</strong></div><button class="interest-button" type="button">관심 있어요 <span>＋</span></button></div></article>
+        <article class="hub-card quiet" data-category="music" data-type="rhythm"><div class="card-image image-rhythm"><span>COMING SOON</span></div><div class="card-content"><p>MUSIC · JANGGU</p><h3>장단을 다루는 솜씨</h3><em>Find the Korean Rhythm</em><div class="achievement-label"><span>ACHIEVEMENT</span><strong>한 장단 함께 연주</strong></div><button class="interest-button" type="button">관심 있어요 <span>＋</span></button></div></article>
+        <article class="hub-card quiet" data-category="music" data-type="voice"><div class="card-image image-voice"><span>COMING SOON</span></div><div class="card-content"><p>MUSIC · PANSORI</p><h3>소리를 다루는 솜씨</h3><em>Sing a Line of Pansori</em><div class="achievement-label"><span>ACHIEVEMENT</span><strong>판소리 한 대목 완성</strong></div><button class="interest-button" type="button">관심 있어요 <span>＋</span></button></div></article>
+        <article class="hub-card quiet" data-category="art" data-type="color"><div class="card-image image-color"><span>COMING SOON</span></div><div class="card-content"><p>ART · COLOR</p><h3>색을 다루는 솜씨</h3><em>Paint with Korean Colors</em><div class="achievement-label"><span>ACHIEVEMENT</span><strong>전통색 엽서 한 장</strong></div><button class="interest-button" type="button">관심 있어요 <span>＋</span></button></div></article>
+      </div>
+    </section>
+
+    <section class="formula-band"><p class="chapter light">THE SOMSSI STANDARD</p><h2>모든 솜씨는 하나의 완성된 경험입니다.</h2><ol><li><b>01</b>DISCOVER</li><li><b>02</b>LEARN</li><li><b>03</b>DO</li><li><b>04</b>COMPLETE</li><li><b>05</b>KEEP</li><li><b>06</b>SHARE</li></ol></section>
+
+    <section class="passport-section"><div><p class="chapter">MY SOMSSI PASSPORT</p><h2>하나씩 배우고,<br>나만의 솜씨를 수집하세요.</h2><p>한 번의 관광으로 끝나지 않습니다. 새로운 솜씨를 완성할 때마다 Passport에 하나의 기록이 생깁니다.</p><a href="somssi2/reservation.html">나의 첫 솜씨 시작하기 <span>→</span></a></div><div class="passport-card"><header><span>MY SOMSSI</span><b>PASSPORT</b></header><ul><li class="done"><i>絃</i><span>Gayageum<small>줄을 다루는 솜씨</small></span><b>✓</b></li><li><i>茶</i><span>Tea<small>차 한 잔의 솜씨</small></span><b>□</b></li><li><i>書</i><span>Calligraphy<small>붓을 다루는 솜씨</small></span><b>□</b></li><li><i>結</i><span>Knot<small>매듭의 솜씨</small></span><b>□</b></li></ul></div></section>
+  </main>
+
+  <footer class="global-footer"><a class="logo" href="somssi2/index.html"><span><b>솜씨</b><small>SOMSSI</small></span></a><p>한국의 솜씨를 배우는 여행<br><em>Experience Korea by Hand</em></p><small>© 2026 SOMSSI KOREA</small></footer>
+
+  <dialog class="somssi-test" id="somssi-test">
+    <button class="test-close" type="button" aria-label="테스트 닫기">×</button>
+    <div class="test-header"><span>SOMSSI TYPE TEST</span><div><i id="test-progress"></i></div><small id="test-step">01 / 05</small></div>
+    <section id="test-question"><p id="question-kicker">QUESTION 01</p><h2 id="question-title">여행에서 가장 기억하고 싶은 순간은?</h2><div class="test-options" id="test-options"></div></section>
+    <section class="test-result" id="test-result" hidden><span class="result-seal" id="result-seal">絃</span><p>YOUR SOMSSI IS</p><h2 id="test-result-title">줄을 다루는 솜씨</h2><em id="test-result-en">The Craft of Strings</em><p id="test-result-copy">손끝으로 소리를 만들고 하나의 곡을 완성할 때 가장 큰 즐거움을 느끼는 타입입니다.</p><div class="match-score"><span>TOP MATCH</span><strong id="match-score">92%</strong></div><button type="button" id="view-recommendation">추천 Experience 보기 <span>→</span></button><button type="button" id="restart-test">다시 테스트하기</button></section>
+  </dialog>
+  <div class="hub-toast" id="hub-toast" role="status" aria-live="polite">관심 Experience로 등록되었습니다.</div>
+  <script src="script.js?v=somssi2-20260820"></script>
+</body>
+</html>
