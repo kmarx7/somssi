@@ -2,12 +2,12 @@
 
 한국의 솜씨를 배우는 여행 — Experience Korea by Hand.
 
-## 현재 범위: PHASE 5
+## 현재 범위: PHASE 6
 
 Next.js App Router, React, TypeScript strict, Tailwind CSS 기반의 공통 디자인 시스템과
 Home·체험 탐색/상세·Creator 목록/상세·About, 체험별 Customize·가격 미리보기,
-Session·날짜·시간·인원 선택 화면을 구현했습니다.
-고객정보·예약 생성·결제는 다음 Phase에서 구현합니다.
+Session·날짜·시간·인원 선택, Guest Checkout, Mock 결제, 예약 완료 화면을 구현했습니다.
+실제 PG와 Supabase 영속 예약은 후속 Phase에서 연결합니다.
 
 ```sh
 npm ci
@@ -19,6 +19,8 @@ npm run dev
 - `/creators`, `/creators/[slug]`, `/about`: Creator 소개·브랜드 이야기.
 - `/experiences/[slug]/customize`: 인원과 옵션을 선택하는 가격 미리보기.
 - `/booking`: 선택한 체험의 날짜·시간·인원과 잔여석 확인.
+- `/checkout`: 예약자 정보 입력, 서버 재계산 합계, Mock 결제.
+- `/booking/complete/[bookingId]`: 예약번호·결제 상태·체험 정보를 보여주는 완료 화면.
 - `/design-system`: 색상, 타이포그래피, 버튼, 폼, 카드, 단계, 상태 예시. 검색 인덱싱 제외.
 - `npm run lint`, `npm run typecheck`, `npm run build`: 검증 명령.
 - `npm run start`: 빌드 결과 실행.
@@ -48,10 +50,11 @@ somssi-site/             수정하지 않은 원본 HTML 프로토타입
 ## 작업 방식
 
 새 기능은 `feat/<feature-name>` 브랜치에서 개발하고 검증 후 push합니다.
-현재 변경은 `feat/phase-4-customize-pricing` 브랜치입니다. PHASE 3 브랜치를 기반으로 했으며,
+현재 변경은 `feat/phase-6-checkout-mock-payment` 브랜치입니다. PHASE 5 브랜치를 기반으로 했으며,
 사용자 요청 없이 main에 병합하지 않습니다.
 
 디자인 사용법: [docs/phase-2.md](docs/phase-2.md).
 이번 변경과 검증 범위: [docs/phase-3.md](docs/phase-3.md).
 가격 미리보기와 검증 범위: [docs/phase-4.md](docs/phase-4.md).
 Session·정원 검증과 설정: [docs/phase-5.md](docs/phase-5.md).
+Checkout·Mock 결제 범위: [docs/phase-6.md](docs/phase-6.md).
