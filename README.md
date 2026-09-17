@@ -2,7 +2,7 @@
 
 한국의 솜씨를 배우는 여행 — Experience Korea by Hand.
 
-## 현재 범위: PHASE 7
+## 현재 범위: PHASE 8
 
 Next.js App Router, React, TypeScript strict, Tailwind CSS 기반의 공통 디자인 시스템과
 Home·체험 탐색/상세·Creator 목록/상세·About, 체험별 Customize·가격 미리보기,
@@ -22,6 +22,7 @@ npm run dev
 - `/checkout`: 예약자 정보 입력, 서버 재계산 합계, Mock 결제.
 - `/booking/complete/[bookingId]`: 예약번호·결제 상태·체험 정보를 보여주는 완료 화면.
 - `/admin`, `/admin/bookings`: 개발용 예약 운영, CHECK IN, COMPLETE 상태 전환.
+- `/certificate/[certificateId]`: 완료 체험 인증서와 공개 검증 화면.
 - `/design-system`: 색상, 타이포그래피, 버튼, 폼, 카드, 단계, 상태 예시. 검색 인덱싱 제외.
 - `npm run lint`, `npm run typecheck`, `npm run build`: 검증 명령.
 - `npm run start`: 빌드 결과 실행.
@@ -51,7 +52,7 @@ somssi-site/             수정하지 않은 원본 HTML 프로토타입
 ## 작업 방식
 
 새 기능은 `feat/<feature-name>` 브랜치에서 개발하고 검증 후 push합니다.
-현재 변경은 `feat/phase-7-admin-checkin-complete` 브랜치입니다. PHASE 6 브랜치를 기반으로 했으며,
+현재 변경은 `feat/phase-8-certificates-verification` 브랜치입니다. PHASE 7 브랜치를 기반으로 했으며,
 사용자 요청 없이 main에 병합하지 않습니다.
 
 디자인 사용법: [docs/phase-2.md](docs/phase-2.md).
@@ -60,3 +61,4 @@ somssi-site/             수정하지 않은 원본 HTML 프로토타입
 Session·정원 검증과 설정: [docs/phase-5.md](docs/phase-5.md).
 Checkout·Mock 결제 범위: [docs/phase-6.md](docs/phase-6.md).
 관리자 Check-in·완료 범위: [docs/phase-7.md](docs/phase-7.md).
+인증서·공개 검증 범위: [docs/phase-8.md](docs/phase-8.md).

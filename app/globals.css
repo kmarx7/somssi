@@ -354,3 +354,16 @@
 .admin-meta { color:var(--muted); font-size:.9rem; }
 .admin-booking-side { display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; justify-content:flex-end; }
 @media (max-width: 600px) { .admin-stats { gap:.5rem; } .admin-stats .card { padding:.85rem; } .admin-booking { align-items:flex-start; flex-direction:column; } .admin-booking-side { justify-content:flex-start; } }
+
+.certificate-page { max-width:48rem; text-align:center; padding-top:clamp(3rem,8vw,6rem); padding-bottom:5rem; }
+.verified-mark { display:inline-flex; align-items:center; gap:.5rem; color:var(--celadon); font-weight:700; letter-spacing:.08em; margin:1rem 0; }
+.verified-mark span { font-size:.8rem; }
+.certificate-card { margin:2rem auto 1.25rem; padding:clamp(2rem,7vw,4rem); background:var(--surface); border:1px solid var(--brass); box-shadow:0 1rem 3rem rgba(23,23,20,.08); }
+.certificate-kicker { text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; color:var(--muted); }
+.certificate-card h2 { font-family:var(--font-display); font-size:clamp(2rem,7vw,3.5rem); margin:.5rem 0 1rem; }
+.certificate-card h3 { font-size:1.4rem; margin:.5rem 0 1.5rem; }
+.certificate-place, .certificate-creator { line-height:1.7; color:var(--muted); }
+.certificate-id { font-family:ui-monospace,monospace; font-size:.75rem; letter-spacing:.08em; margin-top:1rem; }
+.qr-placeholder { width:7rem; height:7rem; margin:1.75rem auto 0; display:grid; grid-template-columns:repeat(5,1fr); gap:2px; padding:5px; background:#171714; }
+.qr-placeholder i { background:#fff; display:block; }
+.qr-placeholder i[data-dark="true"] { background:#171714; }

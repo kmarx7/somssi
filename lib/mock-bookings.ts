@@ -4,11 +4,12 @@ import { calculatePreviewPrice } from "./pricing";
 import { canFitGuests, findSession } from "./sessions";
 import { getPaymentProvider } from "./payment";
 import type { Locale } from "./i18n/dictionaries";
+import { issueCertificate } from "./mock-certificates";
 
 export type BookingRecord = {
   id: string; bookingNumber: string; experienceSlug: string; sessionId: string; guestCount: number; optionCodes: string[];
   firstName: string; lastName: string; customerName: string; email: string; country: string; phone?: string; language: Locale;
-  baseAmount: number; optionsAmount: number; totalAmount: number; paymentId: string; paymentStatus: "PAID"; status: "CONFIRMED" | "CHECKED_IN" | "COMPLETED"; createdAt: string; checkedInAt?: string; completedAt?: string;
+  baseAmount: number; optionsAmount: number; totalAmount: number; paymentId: string; paymentStatus: "PAID"; status: "CONFIRMED" | "CHECKED_IN" | "COMPLETED"; createdAt: string; checkedInAt?: string; completedAt?: string; certificateId?: string;
 };
 export class BookingServiceError extends Error { constructor(public readonly code: "INVALID_BOOKING" | "SESSION_FULL" | "PAYMENT_FAILED" | "INVALID_STATUS", message: string) { super(message); } }
 const bookings = new Map<string, BookingRecord>();
@@ -36,6 +37,7 @@ export function updateBookingStatus(id: string, next: "CHECKED_IN" | "COMPLETED"
   if (next === "CHECKED_IN" && booking.status !== "CONFIRMED") throw new BookingServiceError("INVALID_STATUS", "Only confirmed bookings can be checked in.");
   if (next === "COMPLETED" && booking.status !== "CHECKED_IN") throw new BookingServiceError("INVALID_STATUS", "Check in the guest before completing the experience.");
   const updated = { ...booking, status: next, ...(next === "CHECKED_IN" ? { checkedInAt: new Date().toISOString() } : { completedAt: new Date().toISOString() }) };
+  if (next === "COMPLETED") updated.certificateId = issueCertificate(updated).id;
   bookings.set(id, updated); return updated;
 }
 export function getReservedCount(sessionId: string) { return reservations.get(sessionId) ?? 0; }
