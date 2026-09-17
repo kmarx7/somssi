@@ -254,6 +254,32 @@
   .creator-profile blockquote { margin: 1.5rem 0; font-size: 1.5rem; color: var(--gayageum); }
   .creator-profile > div { max-width: 48rem; }
   .about-image { position: relative; aspect-ratio: 16 / 10; }
+  .customize-page { padding-bottom: 4rem; }
+  .customize-layout { display: grid; gap: 2rem; align-items: start; }
+  .customize-form { display: grid; gap: 1rem; }
+  .option-fieldset { border: 0; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.75rem; }
+  .option-fieldset legend { font-size: 1.5rem; font-weight: 500; margin-bottom: 0.75rem; }
+  .option-choice { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 0.75rem; align-items: start; padding: 1rem; border: 1px solid var(--line); background: var(--surface); cursor: pointer; }
+  .option-choice:hover, .option-choice.is-selected { border-color: var(--celadon); }
+  .option-choice.is-selected { box-shadow: inset 3px 0 var(--celadon); }
+  .option-choice input { width: 22px; height: 22px; margin-top: 0.15rem; accent-color: var(--celadon); }
+  .option-choice-copy { display: grid; gap: 0.35rem; }
+  .option-choice-copy strong { font-size: 1.15rem; }
+  .option-choice-copy small { color: var(--muted); font-size: 0.95rem; }
+  .option-choice-copy .price strong { font-size: 1rem; }
+  .option-choice-action { grid-column: 2; color: var(--muted); font-size: 0.875rem; text-decoration: underline; text-underline-offset: 0.25rem; }
+  .option-choice-amount { grid-column: 2; }
+  .option-choice-amount .price strong { font-size: 1rem; }
+  .price-summary { display: grid; gap: 1.5rem; padding: 1.5rem; background: var(--surface); border: 1px solid var(--line); }
+  .price-summary h2 { font-size: 1.8rem; }
+  .price-summary dl { display: grid; gap: 0.9rem; margin: 0; }
+  .price-summary dl div { display: flex; justify-content: space-between; gap: 1rem; }
+  .price-summary dt { color: var(--muted); }
+  .price-summary dd { margin: 0; text-align: right; }
+  .price-summary .summary-total { padding-top: 1rem; border-top: 1px solid var(--line); align-items: baseline; }
+  .summary-total dt { color: var(--ink); font-weight: 600; }
+  .summary-total .price strong { font-size: 1.5rem; }
+  .price-summary > p:not(.eyebrow) { color: var(--muted); }
 }
 @media (min-width: 768px) {
   .site-navigation { flex-basis: auto; order: initial; border-top: 0; padding: 0; gap: 1.5rem; }
@@ -274,6 +300,8 @@
   .mobile-booking { display: none; }
   body:has(.mobile-booking) { padding-bottom: 0; }
   .experience-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .customize-layout { grid-template-columns: minmax(0, 1fr) 330px; gap: 3rem; }
+  .price-summary { position: sticky; top: 2rem; }
 }
 @keyframes pulse { 50% { opacity: 0.55; } }
 @media (prefers-reduced-motion: reduce) {
