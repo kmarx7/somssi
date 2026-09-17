@@ -1,13 +1,23 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/layout";
 import { getI18n } from "@/lib/i18n/server";
+import { discoveryCopy } from "@/lib/i18n/discovery";
+import { creators, experiences } from "@/lib/catalog";
+import { ButtonLink } from "@/components/ui/button";
+import { SectionHeading } from "@/components/ui/layout";
+import { ExperienceCard } from "@/components/discovery/experience-card";
+import { CreatorCard } from "@/components/discovery/creator-card";
+import { CertificatePreview, FinalCta, LearnDoKeep, OptionsOverview } from "@/components/discovery/sections";
 
-// Phase 2 brand shell. Full discovery content belongs to Phase 3.
 export default async function Home() {
-  const { t } = await getI18n();
-  return <Container><section className="brand-intro"><div><p className="eyebrow">K-CULTURE EXPERIENCE · INCHEON</p>
-    <h1>Experience Korea<br /><em>by Hand.</em></h1><p lang="ko" className="korean-tagline">한국의 솜씨를 배우는 여행</p>
-    <p className="intro-copy">{t.intro}</p><p className="preparing">{t.preparing}</p>
-    </div><div className="brand-image"><Image src="/images/hanok-hero.png" alt="" fill priority sizes="(min-width: 1024px) 45vw, 100vw" /></div>
-  </section></Container>;
+  const { locale } = await getI18n();
+  const t = discoveryCopy[locale];
+  return <><Container><section className="discovery-hero"><div className="hero-editorial"><p className="eyebrow">SOMSSI · INCHEON, KOREA</p><p className="hero-brand" lang="en">Experience Korea<br /><em>by Hand.</em></p><p className="korean-tagline" lang="ko">한국의 솜씨를 배우는 여행</p><h1>{t.hero}<br />{t.heroEm}</h1><p className="intro-copy">{t.heroBody}</p><ButtonLink href="/experiences">{t.explore} <span aria-hidden="true">↗</span></ButtonLink></div><div className="hero-craft"><Image src="/images/gayageum-experience.png" alt={experiences[0].alt[locale]} fill priority sizes="(min-width: 1024px) 50vw, 100vw" /><span className="image-label">01 / GAYAGEUM</span></div></section>
+    <section className="content-section"><h2 className="sr-only">{locale === "en" ? "What is SOMSSI?" : "SOMSSI란?"}</h2><LearnDoKeep locale={locale} /></section>
+    <section className="content-section" aria-labelledby="choose"><SectionHeading id="choose" eyebrow="CHOOSE YOUR SOMSSI" title={t.choose} description={t.chooseBody} /><div className="experience-grid">{experiences.map((experience) => <ExperienceCard key={experience.slug} experience={experience} locale={locale} />)}</div><p className="preview-note">{t.previewNotice}</p></section>
+  </Container><section className="options-band"><Container><SectionHeading eyebrow="CORE EXPERIENCE + OPTIONAL EXPERIENCE" title={t.yours} description={t.yoursBody} /><OptionsOverview locale={locale} /></Container></section><Container>
+    <section className="content-section"><SectionHeading eyebrow="MEET THE CREATOR" title={t.creatorTitle} description={t.creatorBody} /><div className="creator-grid">{creators.map((creator) => <CreatorCard key={creator.slug} creator={creator} locale={locale} />)}</div></section>
+    <section className="content-section"><SectionHeading eyebrow="HOW IT WORKS" title={t.how} /><ol className="journey">{t.steps.map((step, index) => <li key={step}><span>0{index + 1}</span><strong>{step}</strong></li>)}</ol></section>
+    <section className="certificate-section"><div><SectionHeading eyebrow="SOMSSI CERTIFICATE" title={t.certificate} description={t.certificateBody} /><p className="eyebrow">LEARN · DO · KEEP</p></div><CertificatePreview locale={locale} /></section><FinalCta locale={locale} />
+  </Container></>;
 }
