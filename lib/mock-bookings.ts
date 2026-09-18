@@ -9,7 +9,7 @@ import { issueCertificate } from "./mock-certificates";
 export type BookingRecord = {
   id: string; bookingNumber: string; experienceSlug: string; sessionId: string; guestCount: number; optionCodes: string[];
   firstName: string; lastName: string; customerName: string; email: string; country: string; phone?: string; language: Locale;
-  baseAmount: number; optionsAmount: number; totalAmount: number; paymentId: string; paymentStatus: "PAID"; status: "CONFIRMED" | "CHECKED_IN" | "COMPLETED"; createdAt: string; checkedInAt?: string; completedAt?: string; certificateId?: string;
+  baseAmount: number; optionsAmount: number; totalAmount: number; paymentId: string; paymentStatus: "PAID"; status: "CONFIRMED" | "CHECKED_IN" | "COMPLETED" | "CANCELLED"; createdAt: string; checkedInAt?: string; completedAt?: string; cancelledAt?: string; cancellationReason?: string; certificateId?: string;
 };
 export class BookingServiceError extends Error { constructor(public readonly code: "INVALID_BOOKING" | "SESSION_FULL" | "PAYMENT_FAILED" | "INVALID_STATUS", message: string) { super(message); } }
 const bookings = new Map<string, BookingRecord>();
@@ -39,6 +39,12 @@ export function updateBookingStatus(id: string, next: "CHECKED_IN" | "COMPLETED"
   const updated = { ...booking, status: next, ...(next === "CHECKED_IN" ? { checkedInAt: new Date().toISOString() } : { completedAt: new Date().toISOString() }) };
   if (next === "COMPLETED") updated.certificateId = issueCertificate(updated).id;
   bookings.set(id, updated); return updated;
+}
+export function cancelBooking(id: string, reason?: string) {
+  const booking = bookings.get(id); if (!booking || booking.status !== "CONFIRMED") throw new BookingServiceError("INVALID_STATUS", "Only confirmed bookings can be cancelled.");
+  const session = findSession(booking.sessionId); if (session && new Date(session.startsAt).getTime() <= Date.now()) throw new BookingServiceError("INVALID_STATUS", "This session can no longer be cancelled.");
+  reservations.set(booking.sessionId, Math.max(0, (reservations.get(booking.sessionId) ?? 0) - booking.guestCount));
+  const updated = { ...booking, status: "CANCELLED" as const, cancelledAt: new Date().toISOString(), cancellationReason: reason?.slice(0, 500) }; bookings.set(id, updated); return updated;
 }
 export function getReservedCount(sessionId: string) { return reservations.get(sessionId) ?? 0; }
 export function getMockBookingCount() { return bookings.size; }

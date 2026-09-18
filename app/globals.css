@@ -386,3 +386,7 @@
 .feedback-form { display:grid; gap:.75rem; }
 .feedback-form label { font-weight:500; margin-top:.75rem; }
 .feedback-form textarea { resize:vertical; }
+
+.manage-page { max-width:48rem; padding-bottom:5rem; }
+.manage-card { margin-top:2rem; padding:clamp(1.25rem,4vw,2rem); }
+.manage-card form { margin-top:1.5rem; }

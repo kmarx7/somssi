@@ -2,7 +2,7 @@
 
 한국의 솜씨를 배우는 여행 — Experience Korea by Hand.
 
-## 현재 범위: PHASE 9
+## 현재 범위: PHASE 10
 
 Next.js App Router, React, TypeScript strict, Tailwind CSS 기반의 공통 디자인 시스템과
 Home·체험 탐색/상세·Creator 목록/상세·About, 체험별 Customize·가격 미리보기,
@@ -25,6 +25,8 @@ npm run dev
 - `/certificate/[certificateId]`: 완료 체험 인증서와 공개 검증 화면.
 - 가야금 Essential·Signature·Complete 패키지와 체험 타임라인.
 - `/feedback/[bookingId]`: 완료 체험 만족도·NPS·후기 입력.
+- `/booking/manage/[bookingId]`: 개발용 예약 취소 요청.
+- Supabase 운영 마이그레이션: 패키지, NPS, 취소, 관리자 RLS.
 - `/design-system`: 색상, 타이포그래피, 버튼, 폼, 카드, 단계, 상태 예시. 검색 인덱싱 제외.
 - `npm run lint`, `npm run typecheck`, `npm run build`: 검증 명령.
 - `npm run start`: 빌드 결과 실행.
@@ -54,7 +56,7 @@ somssi-site/             수정하지 않은 원본 HTML 프로토타입
 ## 작업 방식
 
 새 기능은 `feat/<feature-name>` 브랜치에서 개발하고 검증 후 push합니다.
-현재 변경은 `feat/phase-9-signature-package-feedback` 브랜치입니다. PHASE 8 브랜치를 기반으로 했으며,
+현재 변경은 `feat/phase-10-production-operations` 브랜치입니다. PHASE 9 브랜치를 기반으로 했으며,
 사용자 요청 없이 main에 병합하지 않습니다.
 
 디자인 사용법: [docs/phase-2.md](docs/phase-2.md).
@@ -65,3 +67,4 @@ Checkout·Mock 결제 범위: [docs/phase-6.md](docs/phase-6.md).
 관리자 Check-in·완료 범위: [docs/phase-7.md](docs/phase-7.md).
 인증서·공개 검증 범위: [docs/phase-8.md](docs/phase-8.md).
 Signature 패키지·후기 범위: [docs/phase-9.md](docs/phase-9.md).
+Production 운영 기반: [docs/phase-10.md](docs/phase-10.md).
