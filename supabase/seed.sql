@@ -13,6 +13,6 @@ insert into public.experiences (slug, category, title_ko, title_en, description_
 insert into public.options (code,name_ko,name_en,description,price,pricing_type) values
  ('HANBOK','한복','Hanbok','Traditional dress experience.',20000,'PER_PERSON'), ('TEA_SNACK','전통차·다과','Tea & sweets','Tea and small sweets.',10000,'PER_PERSON'), ('PHOTO','사진 촬영','Photo package','Keep the moment.',20000,'PER_BOOKING') on conflict do nothing;
 insert into public.sessions (experience_id,creator_id,venue_id,start_at,end_at,capacity,booked_count,status)
- select e.id,e.creator_id,'00000000-0000-0000-0000-000000000001','2026-10-20 10:30+09','2026-10-20 12:00+09',6,2,'OPEN' from public.experiences e where e.slug='gayageum'
- union all select e.id,e.creator_id,'00000000-0000-0000-0000-000000000001','2026-10-20 15:00+09','2026-10-20 16:30+09',6,4,'OPEN' from public.experiences e where e.slug='gayageum'
- union all select e.id,e.creator_id,'00000000-0000-0000-0000-000000000002','2026-10-22 14:00+09','2026-10-22 15:30+09',6,1,'OPEN' from public.experiences e where e.slug='knot';
+ select e.id,e.creator_id,'00000000-0000-0000-0000-000000000001'::uuid,'2026-10-20 10:30+09','2026-10-20 12:00+09',6,2,'OPEN' from public.experiences e where e.slug='gayageum'
+ union all select e.id,e.creator_id,'00000000-0000-0000-0000-000000000001'::uuid,'2026-10-20 15:00+09','2026-10-20 16:30+09',6,4,'OPEN' from public.experiences e where e.slug='gayageum'
+ union all select e.id,e.creator_id,'00000000-0000-0000-0000-000000000002'::uuid,'2026-10-22 14:00+09','2026-10-22 15:30+09',6,1,'OPEN' from public.experiences e where e.slug='knot';
