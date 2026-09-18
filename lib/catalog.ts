@@ -8,6 +8,7 @@ export type Experience = {
   image: string; alt: Localized; creatorSlug: string; accent: string;
   activities: Localized[]; included: Localized[];
 };
+export type ExperiencePackage = { code: string; name: Localized; description: Localized; price: number; includedOptionCodes: readonly string[] };
 
 // Preview catalogue, deliberately separate from UI. Replace via a service in later phases.
 export const experiences: readonly Experience[] = [
@@ -47,9 +48,17 @@ export const options = [
   { code: "TEA_SNACK", title: copy("Tea & sweets", "전통차·다과"), description: copy("Make time for a warm cup and a little sweetness.", "따뜻한 차와 다과로 잠시 쉬어가세요."), price: 10000, pricingType: "PER_PERSON" },
   { code: "PHOTO", title: copy("Photo package", "사진 촬영"), description: copy("Keep the moments when your hands learned something new.", "손으로 배우던 순간을 사진으로 남겨보세요."), price: 20000, pricingType: "PER_BOOKING" },
 ] as const;
+export const experiencePackages: Record<string, readonly ExperiencePackage[]> = {
+  gayageum: [
+    { code: "ESSENTIAL", name: copy("Essential", "에센셜"), description: copy("Gayageum discovery and guided practice.", "가야금의 구조를 이해하고 직접 연주해보는 기본 체험입니다."), price: 79000, includedOptionCodes: [] },
+    { code: "SIGNATURE", name: copy("Signature", "시그니처"), description: copy("Hanbok, tea and sweets, and a keepsake certificate.", "한복, 전통차·다과, 체험 인증서를 함께 제공합니다."), price: 99000, includedOptionCodes: ["HANBOK", "TEA_SNACK"] },
+    { code: "COMPLETE", name: copy("Complete", "컴플리트"), description: copy("The full day with styling, tea, photos, and a Culture Pack.", "한복, 차·다과, 사진 촬영과 Culture Pack까지 포함한 전체 경험입니다."), price: 129000, includedOptionCodes: ["HANBOK", "TEA_SNACK", "PHOTO"] },
+  ],
+};
 const experienceOptions: Record<string, readonly string[]> = {
   gayageum: ["HANBOK", "TEA_SNACK", "PHOTO"], knot: ["HANBOK", "TEA_SNACK", "PHOTO"], minhwa: ["HANBOK", "TEA_SNACK", "PHOTO"],
 };
 export const findExperience = (slug: string) => experiences.find((item) => item.slug === slug);
 export const findCreator = (slug: string) => creators.find((item) => item.slug === slug);
 export const getExperienceOptions = (slug: string) => options.filter((item) => experienceOptions[slug]?.includes(item.code));
+export const getExperiencePackages = (slug: string) => experiencePackages[slug] ?? [];
