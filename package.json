@@ -9,8 +9,12 @@
     "lint": "eslint app components lib next.config.ts eslint.config.mjs postcss.config.mjs --max-warnings=0",
     "typecheck": "next typegen && tsc --noEmit"
   },
-  "engines": { "node": ">=20.9.0" },
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "dependencies": {
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.57.4",
     "next": "^16.3.5",
     "pptxgenjs": "^4.0.1",
     "react": "^19.3.0",
