@@ -8,7 +8,10 @@ export async function getSupabaseHealth() {
     // role key out of this path; it is reserved for trusted server actions.
     const supabase = createClient(config.url, config.publishableKey, { auth: { persistSession: false, autoRefreshToken: false } });
     const { error } = await supabase.from("experiences").select("id").limit(1);
-    if (error) return { configured: true, schemaReady: false, message: "Supabase is reachable, but the SOMSSI schema is not ready." };
+    if (error) {
+      console.error("Supabase health query failed", { code: error.code, message: error.message });
+      return { configured: true, schemaReady: false, message: `Supabase schema check failed (${error.code || "QUERY_FAILED"}).` };
+    }
     return { configured: true, schemaReady: true, message: "Supabase is connected." };
   } catch { return { configured: true, schemaReady: false, message: "Supabase connection could not be verified." }; }
 }
