@@ -1,7 +1,11 @@
+function cleanEnvValue(value: string | undefined) {
+  return value?.trim().replace(/^['\"]|['\"]$/g, "");
+}
+
 export function getSupabaseConfig() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
-  const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
+  const url = cleanEnvValue(process.env.NEXT_PUBLIC_SUPABASE_URL);
+  const publishableKey = cleanEnvValue(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+  const serviceRoleKey = cleanEnvValue(process.env.SUPABASE_SERVICE_ROLE_KEY);
   return { url, publishableKey, serviceRoleKey, configured: Boolean(url && publishableKey) };
 }
 
