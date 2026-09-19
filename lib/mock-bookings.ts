@@ -9,7 +9,7 @@ import { issueCertificate } from "./mock-certificates";
 export type BookingRecord = {
   id: string; bookingNumber: string; experienceSlug: string; sessionId: string; guestCount: number; optionCodes: string[];
   firstName: string; lastName: string; customerName: string; email: string; country: string; phone?: string; language: Locale;
-  baseAmount: number; optionsAmount: number; totalAmount: number; paymentId: string; paymentStatus: "PAID"; status: "CONFIRMED" | "CHECKED_IN" | "COMPLETED" | "CANCELLED"; createdAt: string; checkedInAt?: string; completedAt?: string; cancelledAt?: string; cancellationReason?: string; certificateId?: string;
+  baseAmount: number; optionsAmount: number; totalAmount: number; paymentId: string; paymentStatus: "PAID"; status: "CONFIRMED" | "CHECKED_IN" | "COMPLETED" | "CANCELLED"; createdAt: string; startsAt?: string; venue?: string; checkedInAt?: string; completedAt?: string; cancelledAt?: string; cancellationReason?: string; certificateId?: string;
 };
 export class BookingServiceError extends Error { constructor(public readonly code: "INVALID_BOOKING" | "SESSION_FULL" | "PAYMENT_FAILED" | "INVALID_STATUS", message: string) { super(message); } }
 const bookings = new Map<string, BookingRecord>();

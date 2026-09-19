@@ -49,3 +49,17 @@ export async function createSupabaseConfirmedBooking(input: {
   if (confirmError || !confirmed) throw new BookingServiceError("PAYMENT_FAILED", "Payment could not be completed. Please try again.");
   return { ...input, id: confirmed.id, bookingNumber: confirmed.booking_number, customerName: confirmed.customer_name, baseAmount, optionsAmount, totalAmount, paymentId: paid.id, paymentStatus: "PAID" as const, status: "CONFIRMED" as const, createdAt: confirmed.created_at, optionCodes: uniqueCodes } satisfies BookingRecord;
 }
+
+export async function getSupabaseBooking(id: string): Promise<BookingRecord | null> {
+  const supabase = createSupabaseAdminClient();
+  const { data, error } = await supabase.from("bookings").select("*, sessions(start_at, experiences(slug)), booking_options(options(code))").eq("id", id).maybeSingle();
+  if (error || !data) return null;
+  const session = Array.isArray(data.sessions) ? data.sessions[0] : data.sessions;
+  const experience = session && (Array.isArray(session.experiences) ? session.experiences[0] : session.experiences);
+  const optionCodes: string[] = (data.booking_options ?? []).map((item: { options?: { code?: string } | { code?: string }[] | null }): string | undefined => {
+    const option = Array.isArray(item.options) ? item.options[0] : item.options;
+    return option?.code;
+  }).filter((code: string | undefined): code is string => Boolean(code));
+  const [firstName = "", ...lastNameParts] = String(data.customer_name ?? "").split(" ");
+  return { id: data.id, bookingNumber: data.booking_number, experienceSlug: experience?.slug ?? "", sessionId: data.session_id, guestCount: data.guest_count, optionCodes, firstName, lastName: lastNameParts.join(" "), customerName: data.customer_name, email: data.customer_email, country: data.customer_country ?? "", phone: data.customer_phone ?? undefined, language: data.language as Locale, baseAmount: data.base_amount, optionsAmount: data.options_amount, totalAmount: data.total_amount, paymentId: "", paymentStatus: data.payment_status, status: data.status, createdAt: data.created_at, startsAt: session?.start_at } as BookingRecord;
+}
